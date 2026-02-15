@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {Providers} from "@/providers/providers";
 import Header from "@/components/UI/header";
+import {siteConfig} from "@/config/site.config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Белорусская кухня",
-  description: "Рецепты белорусской кухни",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -30,7 +31,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-           <Header/> {children}
+          <Header />
+          <main className="flex flex-col h-[calc(100vh-60px-80px)] w-full justify-start items-center">
+            {children}
+          </main>
+          <footer className={"h-[${LayoutConfig.footerHeight}] flex justify-center items-center"}>
+            <p>{siteConfig.description}</p>
+          </footer>
         </Providers>
       
        
