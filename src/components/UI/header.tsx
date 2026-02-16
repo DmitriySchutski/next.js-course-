@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site.config";
+import { LayoutConfig } from "@/config/layout.config";
 
 export const Logo = () => {
   return (
@@ -39,7 +40,8 @@ const getNavItems = () => {
 };
 
   return (
-    <Navbar className={"h-[${LayoutConfig.headerHeight}]"}>
+    <Navbar className={`h-[${LayoutConfig.headerHeight}]`}
+    style={{ height: LayoutConfig.headerHeight}}>
       <NavbarBrand>
         <Link href="/" className="flex gap-1">
           <Logo />
